@@ -44,9 +44,7 @@ if(command === 'punish srivats'){
 if(command === 'punish'){
     message.channel.send('please mention a user to punish');
 }
-if(command === 'punish ' +`<@${userName}>` ){
-    message.channel.send(`<@${userName}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
-}
+
 });
 
 
