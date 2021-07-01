@@ -11,9 +11,9 @@ const prefix = '&';
 
 client.commands= new Discord.Collection();
 
-const commandsFiles = fs.readdirSync('./').filter(file => file.endsWith('.js'));
+const commandsFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandsFiles){
-    const commands = require(`./${file}`);
+    const commands = require(`./commands/${file}`);
     client.commands.set(command.name , command);
 }
 
@@ -77,7 +77,7 @@ client.on("message", message => {
       const args = message.content.slice(prefix.length).split(/ +/);
       const command = args.shift().toLowerCase();
       if(command==='ping'){
-       client.commands.get('ping').execute(message, args);
+       channel.message.send('it works')
       }else if(command=='youtube'){
         client.commands.get('youtube').execute(message, args);
       }
