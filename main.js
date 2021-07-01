@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
-const prefix = '& ';
+const prefix = '&';
 
 
 
@@ -26,14 +26,18 @@ client.on('message' , (message)=>{
     if(message.channel.type == 'dm'){
         client.users.fetch(message.author.id).then(user=>user.send(embed).catch(err => console.log(err)))
     }
-   console.log("Modmail is online !")
+   
 });
+client.once('ready', () => {
+	console.log('The bot is online !!');
+});
+// client.on("message", message => {
+//     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
+//     if (message.channel.type == "dm" && message.author.id !== '859742200049172480'){
+//         xhannel.send( `<@${message.author.id}>` + ' said ' + message.content); 
+//     } 
+//   });
 
-client.on('message' , (message)=>{
-    if(message.content === `${prefix}help`){
-        message.channel.send('This works !')
-    }
-})
 
 
 
@@ -55,20 +59,4 @@ client.on("message", message => {
 
 
 client.login(process.env.BOT_KEY);
-
-
-
-
-
-
-
-
-
-// client.on("message", message => {
-//     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
-//     if (message.channel.type == "dm" && message.author.id !== '859742200049172480'){
-//         xhannel.send( `<@${message.author.id}>` + ' said ' + message.content); 
-//     } 
-//   });
-
  
