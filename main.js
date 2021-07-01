@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
 const prefix = '& ';
-const taggedUser = message.mentions.users.first();
+
 
 
 
@@ -14,6 +14,7 @@ client.once('ready',()=> {
 
 
 client.on('message' , message =>{
+const taggedUser = message.mentions.users.first();
 if(!message.content.startsWith(prefix) || message.author.client)return;
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const command = args.shift().toLowerCase();
