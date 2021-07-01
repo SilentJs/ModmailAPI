@@ -25,8 +25,10 @@ const command = args.shift().toLowerCase();
 if(command === `blast`){
     if(!args.length){
         return message.channel.send(`you didn't select anyone to blast , ${message.author} !`)
-    }else if(args[0]=== taggedUser.username ){
-      message.channel.send(`You want to blast: ${taggedUser.username}`)
+    }else if(args[0]=== myself ){
+      message.channel.send('Blasting NOW !!');
+    }else if(command === 'hehe'){
+        message.channel.send(`You wanted to blast ${taggedUser.username}`)
     }
     message.channel.send(`Command name: ${command}\nArguments: ${args}`);
 }
