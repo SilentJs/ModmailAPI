@@ -38,14 +38,6 @@ if(command === 'rembed'){
     message.channel.send();
 
 }
-if(command === 'punish srivats'){
-   message.channel.send('srivats was whipped by his dog until he behaved like a good boi :head_bandage: ')
-}
-if(command === 'punish'){
-    message.reply('please mention a user to punish');
-}else if(command === 'punish srivats'){
-    message.reply('srivats was whipped by his dog until he behaved like a good boi :head_bandage: ')
-}
 
 if(command === 'punish ' +`<@${message.mentions.users.first}>` ){
     message.reply(`<@${message.mentions.users.first}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
