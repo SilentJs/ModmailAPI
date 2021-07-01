@@ -39,7 +39,7 @@ if(command === 'rembed'){
 
 }
 const taggedUser = message.mentions.users.first();
-if(command === 'punish ' +`<@${taggedUser.username}>` ){
+if(command === 'punish'){
     message.reply(`<@${taggedUser.username}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
 }
 });
