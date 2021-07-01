@@ -1,11 +1,21 @@
+//Modmail.exe v1.2
 //Core Source Code "start"
 
+const chalk = require('chalk');
 const Discord = require('discord.js');
+const fs = require('fs');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
 const prefix = '&';
 
 
+client.commands= new Discord.Collection();
+
+const commandsFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+for(const file of commandsFiles){
+    const commands = require(`./commands/${file}`);
+    client.commands.set(command.name , command);
+}
 
 
 
@@ -32,10 +42,7 @@ client.on('message' , (message)=>{
 });
 client.once('ready', () => {
 	console.log('The bot is online !!');
-    client.user.setActivity("server problems", {
-        type: "LISTENING",
-        url: ""
-      });
+    
 });
 // client.on("message", message => {
 //     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
@@ -50,7 +57,7 @@ client.once('ready', () => {
 client.on("message", message => {
     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
     if (message.channel.type == "dm" && message.author.id !== '859742200049172480'){
-        let jambed = new Discord.MessageEmbed() //Ver 11.5.1 of Discord.js
+        let jambed = new Discord.MessageEmbed() 
         .setColor("RANDOM")
         .setTitle(`${message.author.username}`+"'s Moderation Concern / Server problem")
         .setDescription(message.content)
@@ -64,6 +71,17 @@ client.on("message", message => {
   });
 
   //core source code "end"
+
+  client.on('message' , (message)=>{
+      if(!message.content.startsWith(prefix) || message.author.bot)return;
+      const args = message.content.slice(prefix.length).split(/ +/);
+      const command = args.shift().toLowerCase();
+      if(command==='ping'){
+       client.commands.get('ping').execute(message, args);
+      }else if(command=='youtube'){
+        client.commands.get('youtube').execute(message, args);
+      }
+  });
 
 
 
