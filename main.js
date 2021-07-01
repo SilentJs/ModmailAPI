@@ -87,5 +87,5 @@ client.on("message", message => {
   });
 
 
-client.login('ODU5NzQyMjAwMDQ5MTcyNDgw.YNxHUQ.vBMbeE81cPEwXTATmqeeHAF_2TU');
+client.login(process.env.BOT_KEY);
  
