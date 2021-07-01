@@ -11,9 +11,9 @@ const prefix = '&';
 
 client.commands= new Discord.Collection();
 
-const commandsFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+const commandsFiles = fs.readdirSync('./').filter(file => file.endsWith('.js'));
 for(const file of commandsFiles){
-    const commands = require(`./commands/${file}`);
+    const commands = require(`./${file}`);
     client.commands.set(command.name , command);
 }
 
