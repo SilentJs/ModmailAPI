@@ -72,22 +72,6 @@ client.on("message", message => {
 
   //core source code "end"
 
-  client.on('message' , (message)=>{
-      if(!message.content.startsWith(prefix) || message.author.bot)return;
-      const args = message.content.slice(prefix.length).split(/ +/);
-      const command = args.shift().toLowerCase();
-      if(command==='ping'){
-       channel.message.send('it works')
-      }else if(command=='youtube'){
-        client.commands.get('youtube').execute(message, args);
-      }
-  });
-  client.on('message' , (message)=>{
-      if(message.content === `${prefix}help`){
-          message.channel.send('It works !')
-      }
-  })
-
 
 
 
