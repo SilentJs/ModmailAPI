@@ -6,16 +6,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
-const prefix = '&';
-
-
-client.commands= new Discord.Collection();
-
-const commandsFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
-for(const file of commandsFiles){
-    const commands = require(`./commands/${file}`);
-    client.commands.set(command.name , command);
-}
+const prefix = '& ';
 
 
 
@@ -73,7 +64,11 @@ client.on("message", message => {
   //core source code "end"
 
 
-
+client.on('message' , (message)=>{
+    if(message.content === `${prefix}help`){
+        message.channel.send('what should I help you with ?')
+    }
+})
 
 
 
