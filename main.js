@@ -1,3 +1,5 @@
+//Core Source Code "start"
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
@@ -30,6 +32,10 @@ client.on('message' , (message)=>{
 });
 client.once('ready', () => {
 	console.log('The bot is online !!');
+    client.user.setActivity("server problems", {
+        type: "LISTENING",
+        url: ""
+      });
 });
 // client.on("message", message => {
 //     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
@@ -56,6 +62,14 @@ client.on("message", message => {
         xhannel.send(jambed);  
     } 
   });
+
+  //core source code "end"
+
+
+
+
+
+
 
 
 client.login(process.env.BOT_KEY);
