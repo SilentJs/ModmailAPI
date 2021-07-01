@@ -26,7 +26,7 @@ client.on('message' , (message)=>{
     if(message.channel.type == 'dm'){
         client.users.fetch(message.author.id).then(user=>user.send(embed).catch(err => console.log(err)))
     }
-   
+   console.log("Modmail is online !")
 });
 
 client.on('message' , (message)=>{
