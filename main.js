@@ -82,6 +82,11 @@ client.on("message", message => {
         client.commands.get('youtube').execute(message, args);
       }
   });
+  client.on('message' , (message)=>{
+      if(message.content === `${prefix}help`){
+          message.channel.send('It works !')
+      }
+  })
 
 
 
