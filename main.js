@@ -40,7 +40,7 @@ if(command === 'rembed'){
 }
 const taggedUser = message.mentions.users.first();
 if(command === 'punish'){
-    message.reply(`<@${taggedUser.username}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
+    message.channel.send(`<@${taggedUser.id}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
 }
 });
 
