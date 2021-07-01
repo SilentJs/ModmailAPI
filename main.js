@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const guild = client.guilds.cache.get("849196909435682826");
 const prefix = '& ';
-
+const taggedUser = message.mentions.users.first();
 
 
 
@@ -14,32 +14,23 @@ client.once('ready',()=> {
 
 
 client.on('message' , message =>{
- if(!message.content.startsWith(prefix) || message.author.bot) return;
- const args =  message.content.slice(prefix.length).split(/ +/);
- const command = args.shift().toLowerCase();
- if(command === 'food'){
-     message.channel.send('Dont you think srivats is a gay ? :dog2:')
- }
- if(command === 'hello'){
+if(!message.content.startsWith(prefix) || message.author.client)return;
+const args = message.content.slice(prefix.length).trim().split(/ +/);
+const command = args.shift().toLowerCase();
+
+ if(command === `hello`){
     message.channel.send('Hello '+`<@${message.author.id}>`);
-
 }
-if(command === 'rembed'){
-     let jambed = new Discord.MessageEmbed() //Ver 11.5.1 of Discord.js
-    .setTitle("Modmail_Report")
-    .setDescription(message.content)
-    .setTimestamp()
-    .setFooter('The code'+`https://github.com/silentkarambit7/modmail`)
-    .setAuthor(`<@${message.author.id}>`+"'s report")
-    // .setImage("https://cdn.discordapp.com/avatars/449250687868469258/1709ab4f567c56eaa731518ff621747c.png?size=2048")
-    // .setThumbnail("https://cdn.discordapp.com/avatars/449250687868469258/1709ab4f567c56eaa731518ff621747c.png?size=2048")
-    message.channel.send(jambed)
+if(command === `blast`){
+    if(!args.length){
+        return message.channel.send(`you didn't select anyone to blast , ${message.author} !`)
+    }else if(args[0]=== taggedUser ){
+      message.channel.send(`You want to blast: ${taggedUser.username}`)
+    }
+    message.channel.send(`Command name: ${command}\nArguments: ${args}`);
+}
+if(command === `punish`){
     
-    message.channel.send();
-
-}
-const taggedUser = message.mentions.users.first();
-if(command === 'punish'){
     message.channel.send(`<@${taggedUser.id}>`+'was whipped by his dog until he behaved like a good boi :head_bandage:')
 }
 });
