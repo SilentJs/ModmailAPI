@@ -14,7 +14,6 @@ client.once('ready',()=> {
 
 
 client.on('message' , message =>{
-const taggedUser = message.mentions.users.first();
 if(!message.content.startsWith(prefix) || message.author.client)return;
 const args = message.content.slice(prefix.length).trim().split(/ +/);
 const command = args.shift().toLowerCase();
@@ -22,15 +21,19 @@ const command = args.shift().toLowerCase();
  if(command === `hello`){
     message.channel.send('Hello '+`<@${message.author.id}>`);
 }
-if(command === `blast`){
+//Arguments section look here Ska7
+
+if(command === 'args'){
     if(!args.length){
-        return message.channel.send(`you didn't select anyone to blast , ${message.author} !`)
-    }else if(args[0]=== myself ){
-      message.channel.send('Blasting NOW !!');
-    }else if(command === 'hehe'){
-        message.channel.send(`You wanted to blast ${taggedUser.username}`)
+        return message.channel.send(`You have not input any argument, ${message.author}!`);
+    }else if(args[0] === 'cat'){
+     return message.channel.send('Meow');
     }
     message.channel.send(`Command name: ${command}\nArguments: ${args}`);
+} else if(command === 'nikal'){
+    const taggedUser = message.mentions.users.first();
+    message.channel.send(`You want to nikal: ${taggedUser.username}`);
+    return;
 }
 if(command === `punish`){
     
@@ -57,7 +60,7 @@ client.on('message' , (message)=>{
         client.users.fetch(message.author.id).then(user=>user.send(embed).catch(err => console.log(err)))
     }
    
-})
+});
 // client.on("message", message => {
 //     let xhannel = client.channels.cache.find(channel => channel.id === '859976932782374944');
 //     if (message.channel.type == "dm" && message.author.id !== '859742200049172480'){
